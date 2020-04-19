@@ -10,12 +10,15 @@ const validation = require('../validation');
 //Controllers
 const userController = require('../controllers/userController');
 
+// GET ALL USERS
 
 router.get('/all', (req, res, next) => {
     userController.getAllUsers(users => {
         res.send(users);
     });
 });
+
+// GET USER BY ID
 
 router.get('/user/:id', (req, res, next) => {
     userController.getUsersById(req.params.id, user => {
@@ -34,6 +37,8 @@ const checkForEmailDuplicate = (req, res, next) => {
     })
 }
 
+// CREATE NEW USER
+
 const createUserValidation = ['firstname', 'lastname', 'email', 'biography', 'password'];
 router.post('/create', validation(createUserValidation), checkForEmailDuplicate, (req, res, next) => {
     const user = req.body;
@@ -41,6 +46,8 @@ router.post('/create', validation(createUserValidation), checkForEmailDuplicate,
         res.send(result);
     });
 });
+
+// UPDATE EXISTING USER
 
 const updateUserValidation = ['id', 'firstname', 'lastname', 'email', 'biography', 'password'];
 router.put('/update', validation(updateUserValidation), (req, res, next) => {

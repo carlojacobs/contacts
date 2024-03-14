@@ -1,1 +1,3 @@
 # contacts
+
+A tiny project I started trying to organise contacts? Don't remember exactly. Storing it for nostalgia's sake...
